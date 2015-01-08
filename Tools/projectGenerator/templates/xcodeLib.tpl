@@ -54,11 +54,11 @@
 		 name = Products;
 		 sourceTree = SOURCE_ROOT;
 	  };
-	  
+
    /* Begin PBXGroups from project generator */
 [include file="xcode.groups.tpl" dirWalk=$dirWalk recurse="no" groupPath="paxorr" groupName="Code" groupHash="00000000000000000000000"]
    /* End PBXGroups from project generator */
-   
+
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -117,7 +117,7 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				OTHER_LDFLAGS_i386 = "-framework Accelerate";
 				OTHER_LDFLAGS_ppc = "-framework vecLib";
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.10;
             GCC_VERSION = 4.2;
 				TORQUE_BUILT_LIBS_DIR = ../../../../engine/lib/builtLibs/;
 			};
@@ -133,7 +133,7 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				OTHER_LDFLAGS_i386 = "-framework Accelerate";
 				OTHER_LDFLAGS_ppc = "-framework vecLib";
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.10;
             GCC_VERSION = 4.2;
 				TORQUE_BUILT_LIBS_DIR = ../../../../engine/lib/builtLibs/;
 			};

@@ -369,7 +369,7 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				OTHER_LDFLAGS_i386 = "-framework Accelerate";
 				OTHER_LDFLAGS_ppc = "-framework vecLib";
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.10;
             GCC_VERSION = 4.2;
 				TORQUE_BUILT_LIBS_DIR = ../../../../engine/lib/builtLibs/;
 			};
@@ -386,7 +386,7 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				OTHER_LDFLAGS_i386 = "-framework Accelerate";
 				OTHER_LDFLAGS_ppc = "-framework vecLib";
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.10;
             GCC_VERSION = 4.2;
 				TORQUE_BUILT_LIBS_DIR = ../../../../engine/lib/builtLibs/;
 			};

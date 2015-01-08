@@ -49,7 +49,7 @@
    /* Begin PBXBuildFiles included by project generator */
 [include file="xcode.buildfiles.tpl" dirWalk=$dirWalk]
    /* End PBXBuildFiles included by project generator */
-   
+
    /* Begin PBXBuildFiles for built lib dependencies */
 [foreach item=def from=$projDepend]
 [assign var=libuid value=$def|uid]
@@ -96,7 +96,7 @@
    /* Begin PBXFileReferences included by project generator */
       [include file="xcode.filerefs.tpl" dirWalk=$dirWalk ]
    /* End PBXFileReferences included by project generator */
-   
+
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 				D29CADE80C88C2C900BBF312 /* Carbon.framework in Frameworks */,
 				D29CADE90C88C2C900BBF312 /* Cocoa.framework in Frameworks */,
 				D29CADEA0C88C2C900BBF312 /* OpenGL.framework in Frameworks */,
-            
+
 [foreach item=def from=$projDepend]
 [assign var=libuid value=$def|uid]
             F[$libuid] /* lib[$def].a */,
@@ -172,7 +172,7 @@
 [foreach item=def from=$projDepend]
 [assign var=libuid value=$def|uid]
            D[$libuid] /* lib[$def].a */,
-[/foreach]         
+[/foreach]
 			);
 			name = builtLibs;
 			path = ../../../../engine/lib/builtLibs;
@@ -302,7 +302,7 @@
 			remoteRef = F[$libuid] /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
       };
-[/foreach]   
+[/foreach]
 /* End PBXReferenceProxy section */
 
 /* Begin PBXTargetDependency section */
@@ -355,7 +355,7 @@
 				GCC_ENABLE_SSE3_EXTENSIONS = YES;
 				OTHER_LDFLAGS_i386 = "-framework Accelerate";
 				OTHER_LDFLAGS_ppc = "-framework vecLib";
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.10;
             GCC_VERSION = 4.2;
 				TORQUE_BUILT_LIBS_DIR = ../../../../engine/lib/builtLibs/;
 			};
@@ -373,7 +373,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				OTHER_LDFLAGS_i386 = "-framework Accelerate";
 				OTHER_LDFLAGS_ppc = "-framework vecLib";
-				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				SDKROOT = macosx10.10;
             GCC_VERSION = 4.2;
 				TORQUE_BUILT_LIBS_DIR = ../../../../engine/lib/builtLibs/;
 			};
@@ -381,7 +381,7 @@
 		};
 		D26834B00C02C77B0020EE4F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			buildSettings = 
+			buildSettings =
          {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				COPY_PHASE_STRIP = NO;
@@ -405,7 +405,7 @@
                "[$def]",
 [/foreach]
             );
-				HEADER_SEARCH_PATHS = ( 
+				HEADER_SEARCH_PATHS = (
 [foreach item=def from=$projIncludes]
                "[$def]",
 [/foreach]
