@@ -1,0 +1,1 @@
+Add the OpenAL.framework file from your mac SDK here. just copy and paste it.  I don’t want to include one as there’s so many SDKs to compile for
