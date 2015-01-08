@@ -23,7 +23,11 @@
 // This file is Mac specific.
 #if defined( __APPLE__ )
 
+// really? PPC in 2015? [JH 1/7/15]
+#ifdef __ppc__
 #include <vecLib/vecLib.h>
+#endif
+
 #include "math/mMathFn.h"
 #include "console/console.h"
 #include "platform/profiler.h"
