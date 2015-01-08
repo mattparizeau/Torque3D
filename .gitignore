@@ -183,16 +183,24 @@ My Projects/
 Project Manager.exe
 projects.xml
 Qt*.dll
-Empty Terrain_0_basetex.jpg
-*.uft
-prefs.cs
+Templates/Full/game/shaders/procedural/
 *.decals
+*.uft
+Templates/Full/game/art/terrains/Empty Terrain_0_basetex.jpg
+Templates/Full/game/core/prefs.cs
+Templates/Full/game/scripts/client/config.cs
+Templates/Full/game/scripts/client/prefs.cs
+Templates/Full/game/scripts/server/banlist.cs
+Templates/Full/game/scripts/server/prefs.cs
+Templates/Full/game/tools/settings.xml
 *.ml
-config.cs
-banlist.cs
-Templates/Full/game/shaders/procedural/*.glsl
-settings.xml
+Templates/Full/game/art/shapes/trees/defaulttree/defaulttree.dae.imposter_normals.dds
+Templates/Full/game/Full.torsion.opt
+Templates/Full/game/art/terrains/Outpost_0_basetex.jpg
+Templates/Full/game/art/shapes/trees/defaulttree/defaulttree.dae.imposter.dds
+Templates/Full/game/art/terrains/Empty Room.ter
+Templates/Full/game/art/terrains/Empty Room_basetex.jpg
+Engine/lib/openal/macosx/OpenAL.framework
 cache..png
 cachemonaco.png
 moncachemoney.png
-autogenConditioners.h
