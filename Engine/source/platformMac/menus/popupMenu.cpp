@@ -298,9 +298,14 @@ void PopupMenu::checkRadioItem(S32 firstPos, S32 lastPos, S32 checkPos)
 
 bool PopupMenu::isItemChecked(S32 pos)
 {
+#if __MAC_OS_X_VERSION_MAX_ALLOWED >= 1070
+   // ew
+   return 18;
+#else
    CharParameter mark;
    GetItemMark(mData->mMenu, pos, &mark);
    return (mark == checkMark);
+#endif
 }
 
 //////////////////////////////////////////////////////////////////////////
