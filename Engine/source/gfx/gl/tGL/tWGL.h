@@ -25,6 +25,8 @@
 
 #include "platform/platform.h"
 
+#if defined(TORQUE_OS_WIN32) || defined(TORQUE_OS_WIN64)
+
 #ifdef TORQUE_OPENGL
 
 #include "tGL.h"
@@ -32,7 +34,9 @@
 
 #define gglHasWExtension(EXTENSION) WGLEW_##EXTENSION
 
-#endif //TORQUE_OPENGL
+#endif // TORQUE_OS_WIN32|64
+
+#endif // TORQUE_OPENGL
 
 #endif
 
