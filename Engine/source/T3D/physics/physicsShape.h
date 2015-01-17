@@ -264,6 +264,9 @@ public:
    /// event occurs. This is automatically set in onAdd but some manipulators
    /// such as Prefab need to make use of this.
    void storeRestorePos();
+
+   /// gets the physics rep
+   PhysicsBody* getPhysicsRep() { return mPhysicsRep; }
 };
 
 #endif // _PHYSICSSHAPE_H_

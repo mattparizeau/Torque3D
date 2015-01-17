@@ -28,6 +28,7 @@
 #include "T3D/physics/bullet/btBody.h"
 #include "T3D/physics/bullet/btPlayer.h"
 #include "T3D/physics/bullet/btCollision.h"
+#include "T3D/physics/bullet/btConstraint.h"
 #include "T3D/gameBase/gameProcess.h"
 #include "core/util/tNamedFactory.h"
 
@@ -96,6 +97,11 @@ PhysicsBody* BtPlugin::createBody()
 PhysicsPlayer* BtPlugin::createPlayer()
 {
    return new BtPlayer();
+}
+
+PhysicsConstraint* BtPlugin::createConstraint()
+{
+   return new BtConstraint();
 }
 
 bool BtPlugin::isSimulationEnabled() const

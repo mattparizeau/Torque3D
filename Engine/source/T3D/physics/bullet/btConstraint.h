@@ -20,40 +20,39 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
-#ifndef _T3D_PHYSICS_BTPLUGIN_H_
-#define _T3D_PHYSICS_BTPLUGIN_H_
+#ifndef _T3D_PHYSICS_BTCONSTRAINT_H_
+#define _T3D_PHYSICS_BTCONSTRAINT_H_
 
-#ifndef _T3D_PHYSICS_PHYSICSPLUGIN_H_
-#include "T3D/physics/physicsPlugin.h"
-#endif
+#include "T3D/physics/physicsConstraint.h"
 
-
-class BtPlugin : public PhysicsPlugin
+class BtConstraint : public PhysicsConstraint
 {
+protected:
+
+   /// The constraint
+   btTypedConstraint *mConstraint;
+   
+   /// Gets the rigidbody of a shape
+   inline btRigidBody *getRigidBody(PhysicsBody *body)
+   {
+      return static_cast<BtBody*>(body)->getRigidBody();
+   }
+
 public:
+   BtConstraint();
+   virtual ~BtConstraint();
 
-   BtPlugin();
-   ~BtPlugin();
+   /// Initializes the constraint and creates it.
+   virtual void init(ConstraintType type);
 
-   /// Create function for factory.
-   static PhysicsPlugin* create();
+   /// Sets the rigidbodies
+   virtual void setRigidBodies(PhysicsBody *a, PhysicsBody *b);
 
-   // PhysicsPlugin
-   virtual void destroyPlugin();
-   virtual void reset();
-   virtual PhysicsCollision* createCollision();
-   virtual PhysicsBody* createBody();
-   virtual PhysicsPlayer* createPlayer();
-   virtual PhysicsConstraint* createConstraint();
-   virtual bool isSimulationEnabled() const;
-   virtual void enableSimulation( const String &worldName, bool enable );
-   virtual void setTimeScale( const F32 timeScale );
-   virtual const F32 getTimeScale() const;
-   virtual bool createWorld( const String &worldName );
-   virtual void destroyWorld( const String &worldName );
-   virtual PhysicsWorld* getWorld( const String &worldName ) const;
-   virtual PhysicsWorld* getWorld() const;
-   virtual U32 getWorldCount() const;
+   /// Sets the pivot points of the rigidbodies
+   virtual void setPivotPoints(Point3F &pivotA, Point3F &pivotB);
+
+   /// Sets the axes points of the rigidbodies
+   virtual void setAxes(Point3F &axisA, Point3F &axisB);
 };
 
-#endif // _T3D_PHYSICS_PXPLUGIN_H_
+#endif // _T3D_PHYSICS_BTCONSTRAINT_H_
