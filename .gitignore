@@ -183,3 +183,16 @@ My Projects/
 Project Manager.exe
 projects.xml
 Qt*.dll
+Empty Terrain_0_basetex.jpg
+*.uft
+prefs.cs
+*.decals
+*.ml
+config.cs
+banlist.cs
+Templates/Full/game/shaders/procedural/*.glsl
+settings.xml
+cache..png
+cachemonaco.png
+moncachemoney.png
+autogenConditioners.h
