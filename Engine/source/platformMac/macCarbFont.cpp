@@ -28,10 +28,12 @@
 #include "core/stringTable.h"
 #include "core/strings/stringFunctions.h"
 
+// from Luis's Dev_osx_opengl branch
+#define FMGetFontFromATSFontRef(x) ((ATSUFontID) x)
 
 //------------------------------------------------------------------------------
 // New Unicode capable font class.
-PlatformFont *createPlatformFont(const char *name, U32 size, U32 charset /* = TGE_ANSI_CHARSET */)
+PlatformFont *createPlatformFont(const char *name, dsize_t size, U32 charset /* = TGE_ANSI_CHARSET */)
 {
     PlatformFont *retFont = new MacCarbFont;
 
@@ -59,7 +61,7 @@ MacCarbFont::~MacCarbFont()
 }
 
 //------------------------------------------------------------------------------
-bool MacCarbFont::create( const char* name, U32 size, U32 charset)
+bool MacCarbFont::create( const char* name, dsize_t size, U32 charset)
 {
    String nameStr = name;
    nameStr = nameStr.trim();

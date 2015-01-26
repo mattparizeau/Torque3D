@@ -20,16 +20,18 @@
 // IN THE SOFTWARE.
 //-----------------------------------------------------------------------------
 
+// Include our GL header before Apple headers.
+#include "gfx/gl/tGL/tGL.h"
+
 // Don't include Apple's GL header
 #define __gl_h_
-// Include our GL header before Apple headers.
-#include "gfx/gl/ggl/ggl.h"
 
 #include "platform/tmm_off.h"
 #include <Cocoa/Cocoa.h>
 #include <OpenGL/OpenGL.h>
 #include "gfx/gl/gfxGLDevice.h"
 #include "platform/tmm_on.h"
+#include "platform/platformGL.h"
 
 #include "gfx/gl/gfxGLTextureTarget.h"
 #include "gfx/gl/gfxGLCardProfiler.h"
@@ -340,4 +342,9 @@ void GFXGLWindowTarget::_setupNewMode()
       static_cast<GFXGLDevice*>(mDevice)->resurrect();
       GFX->updateStates(true);
    }
+}
+
+void PlatformGL::setVSync(const int i)
+{
+    // TODO vsync OpenGL Mac OSX
 }

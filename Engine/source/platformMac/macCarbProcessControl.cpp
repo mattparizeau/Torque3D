@@ -21,11 +21,11 @@
 //-----------------------------------------------------------------------------
 
 #include "platformMac/platformMacCarb.h"
-#include "platform/event.h"
+#include "platform/input/event.h"
 #include "core/util/journal/process.h"
 #include "console/console.h"
 
-void Platform::postQuitMessage(const U32 in_quitVal)
+void Platform::postQuitMessage(const S32 in_quitVal)
 {
    Process::requestShutdown();
 }
