@@ -60,7 +60,7 @@
 		43E38C570FD438E300E9AAA9 /* npPlugin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = npPlugin.cpp; path = ../../web/source/npplugin/npPlugin.cpp; sourceTree = SOURCE_ROOT; };
 		43E38C590BC4393700E9AAA9 /* webConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = webConfig.h; path = ../../web/source/common/webConfig.h; sourceTree = SOURCE_ROOT; };
 		43E38C590FD4393700E9AAA9 /* webCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = webCommon.h; path = ../../web/source/common/webCommon.h; sourceTree = SOURCE_ROOT; };
-		43E38C5A0FD4393700E9AAA9 /* webCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = webCommon.cpp; path = ../../web/source/common/webCommon.cpp; sourceTree = SOURCE_ROOT; };		
+		43E38C5A0FD4393700E9AAA9 /* webCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = webCommon.cpp; path = ../../web/source/common/webCommon.cpp; sourceTree = SOURCE_ROOT; };
                 4315B01A0F3A517D002F4B9F /* npWebGamePlugin.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = npWebGamePlugin.mm; path = ../../web/source/npplugin/mac/npWebGamePlugin.mm; sourceTree = "<group>"; };
 		4315B01A0F3A627D002F4B9F /* npWebGamePlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = npWebGamePlugin.h; path = ../../web/source/npplugin/mac/npWebGamePlugin.h; sourceTree = "<group>"; };
 		4315B02B0F3A5261002F4B9F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
@@ -118,7 +118,7 @@
 [foreach item=def from=$projDepend]
 [assign var=libuid value=$def|uid]
            D[$libuid] /* lib[$def].a */,
-[/foreach]         
+[/foreach]
 			);
 			name = builtLibs;
 			path = ../../../../engine/lib/builtLibs;
@@ -165,9 +165,9 @@
 				4315B01A0F3A517D002F4B9F /* npWebGamePlugin.mm */,
 				4315B01A0F3A627D002F4B9F /* npWebGamePlugin.h */,
 				43E38C570FD438E300E9AAA9 /* npPlugin.cpp */,
-				43E38C590BC4393700E9AAA9 /* webConfig.h */, 
+				43E38C590BC4393700E9AAA9 /* webConfig.h */,
 				43E38C590FD4393700E9AAA9 /* webCommon.h */,
-				43E38C5A0FD4393700E9AAA9 /* webCommon.cpp */, 	
+				43E38C5A0FD4393700E9AAA9 /* webCommon.cpp */,
 				32BAE0B30371A71500C91783 /* WebGamePlugin_Prefix.pch */,
 			);
 			name = Source;
@@ -245,7 +245,7 @@
 			remoteRef = F[$libuid] /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
       };
-[/foreach]   
+[/foreach]
 /* End PBXReferenceProxy section */
 
 /* Begin PBXTargetDependency section */
@@ -339,8 +339,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-            GCC_VERSION = 4.2;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+            SDKROOT = macosx10.7;
 			};
 			name = Debug;
 		};
@@ -351,8 +350,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				PREBINDING = NO;
-            GCC_VERSION = 4.2;
-				SDKROOT = "$(DEVELOPER_SDK_DIR)/MacOSX10.5.sdk";
+            SDKROOT = macosx10.7;
 			};
 			name = Release;
 		};
