@@ -29,6 +29,14 @@ namespace GL
 {
    void gglPerformBinds()
    {
+#if defined(__APPLE__)
+      // Silly mac, experimental is for plebs.
+      //
+      // Really though, on OSX glew thinks the extension doesn't exist
+      // however, it does. Luckilly, glew provides this work around.
+      glewExperimental = true;
+#endif
+      
       GLenum err = glewInit();
       AssertFatal(GLEW_OK == err, avar("Error: %s\n", glewGetErrorString(err)) );
    }

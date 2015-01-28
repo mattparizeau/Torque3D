@@ -28,13 +28,18 @@ static Vector<NSOpenGLPixelFormatAttribute> _beginPixelFormatAttributesForDispla
    Vector<NSOpenGLPixelFormatAttribute> attributes;
    attributes.reserve(16); // Most attribute lists won't exceed this
    
+   // OpenGL 3.2 needed
+   attributes.push_back(NSOpenGLPFAOpenGLProfile);
+   attributes.push_back(NSOpenGLProfileVersion3_2Core);
+   
    attributes.push_back(NSOpenGLPFAScreenMask);
    attributes.push_back((NSOpenGLPixelFormatAttribute)CGDisplayIDToOpenGLDisplayMask(display));
    attributes.push_back(NSOpenGLPFANoRecovery);
    attributes.push_back(NSOpenGLPFADoubleBuffer);
    attributes.push_back(NSOpenGLPFAAccelerated);
-   attributes.push_back(NSOpenGLPFAAuxBuffers);
-   attributes.push_back((NSOpenGLPixelFormatAttribute)1);
+   //attributes.push_back(NSOpenGLPFAAuxBuffers);
+   attributes.push_back((NSOpenGLPixelFormatAttribute)0); //1 
+   
    return attributes;
 }
 
