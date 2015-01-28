@@ -952,6 +952,7 @@ bool GFXGLShader::_loadShaderFromStream(  GLuint shader,
    buffers.push_back( dStrdup( versionDecl ) );
    lengths.push_back( dStrlen( versionDecl ) );
 
+#if !defined(GL_CORE_PROFILE)
    if(gglHasExtension(EXT_gpu_shader4))
    {
       const char *extension = "#extension GL_EXT_gpu_shader4 : enable\r\n";
@@ -965,6 +966,7 @@ bool GFXGLShader::_loadShaderFromStream(  GLuint shader,
       buffers.push_back( dStrdup( extension ) );
       lengths.push_back( dStrlen( extension ) );
    }
+#endif // GL_CORE_PROFILE
 
    const char *newLine = "\r\n";
    buffers.push_back( dStrdup( newLine ) );
