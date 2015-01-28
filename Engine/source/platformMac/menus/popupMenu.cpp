@@ -183,7 +183,7 @@ static void _assignCommandKeys(const char* accel, MenuRef menu, MenuItemIndex it
 }
 
 
-S32 PopupMenu::insertItem(S32 pos, const char *title, const char* accel)
+S32 PopupMenu::insertItem(S32 pos, const char *title, const char* accel, const char *cmd)
 {
    MenuItemIndex item;
    CFStringRef cftitle;
@@ -420,7 +420,7 @@ U32 PopupMenu::getItemCount()
    return CountMenuItems( mData->mMenu );
 }
 
-bool PopupMenu::setItem(S32 pos, const char *title, const char *accelerator)
+bool PopupMenu::setItem(S32 pos, const char *title, const char *accelerator, const char *cmd)
 {
    //TODO: update accelerator?
    

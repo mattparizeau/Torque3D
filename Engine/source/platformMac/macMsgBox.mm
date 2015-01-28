@@ -41,6 +41,12 @@ bool Platform::AlertRetry(const char *windowTitle, const char *message)
    return ( Platform::messageBox(windowTitle, message, MBRetryCancel, MIInformation) == MRRetry );
 }
 
+Platform::ALERT_ASSERT_RESULT Platform::AlertAssert(const char *windowTitle, const char *message)
+{
+   Con::errorf("Platform::AlertAssert() not implemented on OSX");
+   return ALERT_ASSERT_DEBUG;
+}
+
 namespace MsgBoxMac
 {
    struct _NSStringMap
