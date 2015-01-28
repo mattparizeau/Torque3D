@@ -24,6 +24,16 @@
 #define T_GL_H
 #include "GL/glew.h"
 
+#if defined(__APPLE__)
+
+#include "tGL.h"
+
+// for OSX, we force the 3.2 core code in the gl folder.
+// this is because we require a core profile
+#define GL_CORE_PROFILE
+
+#endif // __APPLE__
+
 #define gglHasExtension(EXTENSION) GLEW_##EXTENSION
 
 #endif
