@@ -23,6 +23,7 @@
 #include <ApplicationServices/ApplicationServices.h>
 #include <Carbon/Carbon.h>
 
+#include "core/frameAllocator.h"
 #include "platform/platformInput.h"
 #include "console/console.h"
 #include "core/strings/unicode.h"
@@ -383,10 +384,11 @@ bool Platform::setClipboard(const char *text)
    err = PutScrapFlavor( clip, kScrapFlavorTypeText, kScrapFlavorMaskNone, textSize, text);
    
    // put the data on the clipboard as unicode
-   const UTF16 *utf16Data = convertUTF8toUTF16(text);
+   // Convert and store. Note that a UTF16 version of the string cannot be longer.
+   FrameTemp<UTF16> utf16Data(dStrlen(text)+1);
+   convertUTF8toUTF16N(text, utf16Data, dStrlen(text)+1);
    err |= PutScrapFlavor( clip, kScrapFlavorTypeUnicode, kScrapFlavorMaskNone,
                         dStrlen(utf16Data) * sizeof(UTF16), utf16Data);
-   delete [] utf16Data;
 
    // and see if we were successful.
    if( err == noErr )
