@@ -144,6 +144,10 @@ void GFXGLDevice::initGLState()
    if( vendorStr.find("NVIDIA", 0, String::NoCase | String::Left) != String::NPos)
       mUseGlMap = false;
 
+#ifdef __APPLE__
+   if( vendorStr.find("INTEL", 0, String::NoCase | String::Left ) != String::NPos)
+      mUseGlMap = false;
+#endif // __APPLE__
 
    if( vendorStr.find("INTEL", 0, String::NoCase | String::Left ) != String::NPos)
    {
