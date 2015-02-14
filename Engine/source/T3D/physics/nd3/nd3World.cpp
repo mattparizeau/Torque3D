@@ -21,6 +21,7 @@
 //-----------------------------------------------------------------------------
 
 #include "platform/platform.h"
+#include "T3D/physics/nd3/nd3.h"
 #include "T3D/physics/nd3/nd3World.h"
 #include "T3D/physics/nd3/nd3Plugin.h"
 
@@ -41,19 +42,52 @@ Nd3World::Nd3World() :
    mTickCount( 0 ),
    mIsEnabled( false )
 {
+   mWorld = NULL;
 } 
 
 Nd3World::~Nd3World()
 {
+   mWorld = NULL;
 }
 
 bool Nd3World::initWorld( bool isServer, ProcessList *processList )
 {
+   mIsServer = isServer;
+
+   // create the world!
+   mWorld = NewtonCreate();
+
+   // my implementation don't really support threading, but this is here just in case
+   // please note that every callback will not be implemented as threadsafe.
+#ifndef DG_USE_THREAD_EMULATION
+   NewtonSetThreadsCount(mWorld, 2);
+#endif
+   
+   // docs says to reset the cache upon creating or resetting the world.
+   NewtonInvalidateCache(mWorld);
+
+   // set default solver
+   NewtonSetSolverModel(mWorld, 1);
+
+   AssertFatal(processList, "Nd3World::init() - We need a process list to create the world!");
+   mProcessList = processList;
+   mProcessList->preTickSignal().notify(this, &Nd3World::getPhysicsResults);
+   mProcessList->postTickSignal().notify(this, &Nd3World::tickPhysics, 1000.0f);
+   
+#ifdef TORQUE_DEBUG
+   Con::printf("Nd3World::init() - successfully Initialized newton wrold.");
+#endif
+
    return true;
 }
 
 void Nd3World::_destroy()
 {
+   // clean up the newton api
+   NewtonDestroyAllBodies(mWorld);
+   NewtonDestroy(mWorld);
+   mWorld = NULL;
+
    // Release the tick processing signals.
    if ( mProcessList )
    {
@@ -81,13 +115,12 @@ void Nd3World::tickPhysics( U32 elapsedMs )
    // Convert it to seconds.
    const F32 elapsedSec = (F32)elapsedMs * 0.001f;
 
-   // Simulate... it is recommended to always use Bullet's default fixed timestep/
-
+   // Simulate..
+   NewtonUpdate(mWorld, elapsedSec);
+   
    mIsSimulating = true;
 
-   Con::printf("SIMULATING :: WE HAVE SET UP CORRECTLY.");
-
-   //Con::printf( "%s Nd3World::tickPhysics!", this == smClientWorld ? "Client" : "Server" );
+   Con::printf( "%s Nd3World::tickPhysics!", !mIsServer ? "Client" : "Server" );
 }
 
 void Nd3World::getPhysicsResults()
@@ -116,22 +149,24 @@ void Nd3World::destroyWorld()
 
 bool Nd3World::castRay( const Point3F &startPnt, const Point3F &endPnt, RayInfo *ri, const Point3F &impulse )
 {
-   return true;
+   AssertFatal(false, "N3dWorld::castRay() - please don't use this. Just use torque's container system.");
+   return false;
 }
 
 PhysicsBody* Nd3World::castRay( const Point3F &start, const Point3F &end, U32 bodyTypes )
 {
+   AssertFatal(false, "N3dWorld::castRay() - please don't use this. Just use torque's container system.");
    return NULL;
 }
 
 void Nd3World::explosion( const Point3F &pos, F32 radius, F32 forceMagnitude )
 {
-
+   AssertFatal(false, "N3dWorld::explosion() - Explosion in a newton world is not supported.");
 }
 
 void Nd3World::onDebugDraw( const SceneRenderState *state )
 {
-
+   AssertFatal(false, "N3dWorld::onDebugDraw() - This will be a pain to set up, but newton does support debug drawing.");
 }
 
 void Nd3World::reset()

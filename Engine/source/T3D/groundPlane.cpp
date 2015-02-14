@@ -127,8 +127,11 @@ bool GroundPlane::onAdd()
 
    addToScene();
 
+   // Newton Dynamics does not support groundplane! D:
+   /*
    if ( PHYSICSMGR )
    {
+      
       PhysicsCollision *colShape = PHYSICSMGR->createCollision();
       colShape->addPlane( PlaneF( Point3F::Zero, Point3F( 0, 0, 1 ) ) ); 
 
@@ -136,6 +139,7 @@ bool GroundPlane::onAdd()
       mPhysicsRep = PHYSICSMGR->createBody();
       mPhysicsRep->init( colShape, 0, 0, this, world );
    }
+   */
 
    return true;
 }

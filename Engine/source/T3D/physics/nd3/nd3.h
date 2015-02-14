@@ -26,6 +26,10 @@
 // Use this define to disable threading in newton
 #define DG_USE_THREAD_EMULATION
 
+// Are we using a static lib of newton?
+#define _NEWTON_STATIC_LIB 
+
 #include <dgPhysics.h>
+#include <Newton.h>
 
 #endif // _T3D_PHYSICS_ND3_ND3_H_

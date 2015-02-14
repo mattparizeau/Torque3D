@@ -40,17 +40,26 @@ class Nd3World : public PhysicsWorld
 {
 protected:
 
+   NewtonWorld *mWorld;
+
    bool mErrorReport;
 
    bool	mIsEnabled;
 
    bool mIsSimulating;
 
+   bool mIsServer;
+
    U32 mTickCount;
 
    ProcessList *mProcessList;
 
    void _destroy();
+
+   /// { @group Callbacks
+   /// These functions are called from the newton SDK.
+
+   /// }
 
 public:
 
@@ -60,10 +69,6 @@ public:
    // PhysicWorld
    virtual bool initWorld( bool isServer, ProcessList *processList );
    virtual void destroyWorld();
-   virtual bool castRay( const Point3F &startPnt, const Point3F &endPnt, RayInfo *ri, const Point3F &impulse );
-   virtual PhysicsBody* castRay( const Point3F &start, const Point3F &end, U32 bodyTypes );
-   virtual void explosion( const Point3F &pos, F32 radius, F32 forceMagnitude );   
-   virtual void onDebugDraw( const SceneRenderState *state );
    virtual void reset();
    virtual bool isEnabled() const { return mIsEnabled; }
 
@@ -73,6 +78,15 @@ public:
 
    void setEnabled( bool enabled );
    bool getEnabled() const { return mIsEnabled; }
+
+   /// { @group Unsupported
+   /// I choose to not support these functions.
+   /// Newton probably supports it, but I do not have a use for them.
+   virtual bool castRay(const Point3F &startPnt, const Point3F &endPnt, RayInfo *ri, const Point3F &impulse);
+   virtual PhysicsBody* castRay(const Point3F &start, const Point3F &end, U32 bodyTypes);
+   virtual void explosion(const Point3F &pos, F32 radius, F32 forceMagnitude);
+   virtual void onDebugDraw(const SceneRenderState *state);
+   /// }
 };
 
 #endif // _T3D_PHYSICS_ND3_ND3WORLD_H_
